@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.view.MenuItem;
 
 import java.net.URL;
 
@@ -46,6 +47,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem news) {
+        int itemThatWasClickedId = news.getItemId();
+        if (itemThatWasClickedId == R.id.refresh_news) {
+            NewsQueryTask refresh = new NewsQueryTask();
+            refresh.execute();
+            return true;
+        }
+        return super.onOptionsItemSelected(news);
+    }
+
 }
 
 
